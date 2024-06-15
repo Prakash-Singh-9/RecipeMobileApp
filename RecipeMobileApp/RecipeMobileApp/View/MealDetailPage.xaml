@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="RecipeMobileApp.View.MealDetailPage"
+    x:Name="mealDetail">
+
+    <ContentPage.Content>
+
+    <StackLayout>
+       <CollectionView Margin="25"
+            ItemsSource="{Binding MealDetailList}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                     <StackLayout Margin="25" >
+                         <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                Command="{Binding Path=BindingContext.SelectedItemCommand,
+                                Source={x:Reference mealDetail} }" CommandParameter="{Binding .}"/>
+                         </StackLayout.GestureRecognizers>
+                         <Label Text="{Binding strMeal}" HorizontalOptions="CenterAndExpand"/>
+                        <Image Source="{Binding strMealThumb}" HeightRequest="100" HorizontalOptions="CenterAndExpand"/>
+                       <Label Text="{Binding strInstructions}" HorizontalOptions="CenterAndExpand"/>
+                     </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
+
